@@ -55,7 +55,8 @@ CGLinearSolver<Mat,Vec>::CGLinearSolver(const LinearSystem<Mat,Vec>& plinearsyst
     AbstractIterativeLinearSolver(maxiterations,tollerance),
     mplinearsystem(plinearsystem),
     mpinitialguess(new Vec(initialguess)),
-    mpconvergence(new ConvergenceCriterion(tollerance))
+    mpconvergence(new ConvergenceCriterion(tollerance)),
+    mSaveData(savedata)
 {
 
 }
@@ -69,7 +70,8 @@ CGLinearSolver<Mat,Vec>::CGLinearSolver(const LinearSystem<Mat,Vec>&& plinearsys
     AbstractIterativeLinearSolver(maxiterations,tollerance),
     mplinearsystem(plinearsystem),
     mpinitialguess(std::move(initialguess)),
-    mpconvergence(std::move(tollerance))
+    mpconvergence(std::move(tollerance)),
+    mSaveData(savedata)
 {
 
 }
@@ -87,7 +89,7 @@ void CGLinearSolver<Mat,Vec>::Solve(Vec& x)
     assert(x.GetSize()==mpinitialguess->GetSize());
     PrintHeader("Congucate Gradiant");
     int size=x.GetSize();
-
+    x=(*mpinitialguess);
     int k=0;
     Vec p(size);
     Vec r(size),r_old(size),q(size);

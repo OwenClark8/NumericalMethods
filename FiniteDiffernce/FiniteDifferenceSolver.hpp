@@ -4,9 +4,11 @@
 #include "../OCPDE/AbstractPDESolver.hpp"
 #include "../OCPDE/SecondOrderPDE2d.hpp"
 #include "../OCLinearSolve/InterativeSolvers/CGLinearSolver.hpp"
+#include "../OCLinearSolve/InterativeSolvers/JacobiSolver.hpp"
+#include "../OCLinearSolve/InterativeSolvers/GaussSeidelSolver.hpp"
 
 
-template<typename M,typename V>
+template<typename M,typename V,typename Solver>
 class FiniteDifferenceSolver:public AbstractPDESolver
 {
 public:
@@ -36,8 +38,9 @@ private:
 };
 
 
-template<typename M,typename V>
-FiniteDifferenceSolver<M,V>::FiniteDifferenceSolver(const GridFunction<2>& grid,
+
+template<typename M,typename V,typename Solver>
+FiniteDifferenceSolver<M,V,Solver>::FiniteDifferenceSolver(const GridFunction<2>& grid,
                             const std::string filename,
                             const SecondOrderPDE2d& myPDE,
                             const double tolerance):
@@ -50,14 +53,16 @@ FiniteDifferenceSolver<M,V>::FiniteDifferenceSolver(const GridFunction<2>& grid,
 }
 
 
-template<typename M,typename V>
-FiniteDifferenceSolver<M,V>::~FiniteDifferenceSolver()
+
+template<typename M,typename V,typename Solver>
+FiniteDifferenceSolver<M,V,Solver>::~FiniteDifferenceSolver()
 {
     delete mpxGrid;
 }
 
-template<typename M,typename V>
-std::unique_ptr<LinearSystem<M,V>> FiniteDifferenceSolver<M,V>::BuildSystem(M&& mat) const
+
+template<typename M,typename V,typename Solver>
+std::unique_ptr<LinearSystem<M,V>> FiniteDifferenceSolver<M,V,Solver>::BuildSystem(M&& mat) const
 {
     std::unique_ptr<M> m(new M(mat));
     int size=mpxGrid->GetSize();
@@ -170,13 +175,28 @@ std::unique_ptr<LinearSystem<M,V>> FiniteDifferenceSolver<M,V>::BuildSystem(M&& 
             mpPDESystem->ComputeF(f);
             RHS[i]+=f[0];
     }
+    /*
+    int a=size;
+    int b=size;
+    for (int i=0;i<a;i++)
+    {
+        std::cout<<"|";
+        for (int j=0;j<b;j++)
+        {
+            std::cout<<std::setprecision(5)<<std::setw(10)<<(*m)(i,j)<<std::setw(10);
+        }
+        std::cout<<"|"<<std::endl;
+
+    }
+    */
     std::unique_ptr<LinearSystem<M,V>> SystemToSolve(new LinearSystem<M,V>(*m,RHS));
     return std::move(SystemToSolve);
 
 }
 
-template<typename M,typename V>
-void FiniteDifferenceSolver<M,V>::Solve()
+
+template<typename M,typename V,typename Solver>
+void FiniteDifferenceSolver<M,V,Solver>::Solve()
 {
 
     PrintHeader("Finite Difference method");
@@ -190,7 +210,7 @@ void FiniteDifferenceSolver<M,V>::Solve()
     V InitialGuess(size);
 
     //std::unique_ptr<JacobiSolver> Mx(new JacobiSolver(*SystemToSolve,InitialGuess,10e-10,100,false));
-    std::unique_ptr<CGLinearSolver<M,V>> PS(new CGLinearSolver<M,V>(*SystemToSolve,InitialGuess,mTolerance,1000,false));
+    std::unique_ptr<Solver> PS(new Solver(*SystemToSolve,InitialGuess,mTolerance,1000,false));
 
     std::unique_ptr<V> U(new Vector(size));
 
@@ -199,7 +219,8 @@ void FiniteDifferenceSolver<M,V>::Solve()
     SaveToFile(*U);
     std::cout<<"Final Solution ="<<std::endl;
     PrintVector(*U);
-    V f{0};
+    V f(1);
+
     if (mpPDESystem->ExactSolDefined())
     {
         Vector Err(size);

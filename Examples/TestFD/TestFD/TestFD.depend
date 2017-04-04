@@ -1,0 +1,191 @@
+# depslib dependency file v1.0
+1491317895 source:c:\users\owen\documents\phdc++\examples\testfd\testfd\driver.cpp
+	"C:\Users\Owen\Documents\PhDC++\OCMathLib\OCMathLib.hpp"
+	"C:\Users\Owen\Documents\PhDC++\OCLinearSolve\LinearSystem.hpp"
+	"..\..\..\FiniteDiffernce/FDBuilder.h"
+	<array>
+	<utility>
+	<stdio.h>
+	<vector>
+
+1491058653 c:\users\owen\documents\phdc++\ocmathlib\ocmathlib.hpp
+	"Matrix.hpp"
+	"Vector.hpp"
+
+1491056368 c:\users\owen\documents\phdc++\ocmathlib\matrix.hpp
+	<math.h>
+	<sstream>
+	<iostream>
+	<fstream>
+	<cassert>
+	<iomanip>
+
+1491056446 c:\users\owen\documents\phdc++\ocmathlib\vector.hpp
+	<math.h>
+	<sstream>
+	<iostream>
+	<fstream>
+	<cassert>
+	<iomanip>
+
+1490887837 c:\users\owen\documents\phdc++\oclinearsolve\linearsystem.hpp
+	"C:\Users\Owen\Documents\PhDC++\OCMathLib\OCMathLib.hpp"
+	<memory>
+
+1462032597 source:c:\users\owen\documents\phdc++\oclinearsolve\convergencecriterion.cpp
+	"ConvergenceCriterion.hpp"
+
+1462324986 c:\users\owen\documents\phdc++\oclinearsolve\convergencecriterion.hpp
+
+1490873127 source:c:\users\owen\documents\phdc++\oclinearsolve\linearsystem.cpp
+	"LinearSystem.hpp"
+
+1491056506 source:c:\users\owen\documents\phdc++\ocmathlib\matrix.cpp
+	"Matrix.hpp"
+	"Vector.hpp"
+
+1490872227 source:c:\users\owen\documents\phdc++\ocmathlib\ocmathlib.cpp
+	"OCMathLib.hpp"
+
+1491056559 source:c:\users\owen\documents\phdc++\ocmathlib\vector.cpp
+	"Vector.hpp"
+	"Matrix.hpp"
+
+1491056489 source:c:\users\owen\documents\phdc++\oclinearsolve\interativesolvers\abstractiterativelinearsolver.cpp
+	<cassert>
+	<fstream>
+	<iostream>
+	<iomanip>
+	<sstream>
+	<string>
+	"AbstractIterativeLinearSolver.hpp"
+
+1490887401 c:\users\owen\documents\phdc++\oclinearsolve\interativesolvers\abstractiterativelinearsolver.hpp
+	"../../OCMathLib/OCMathLib.hpp"
+	"../LinearSystem.hpp"
+
+1490887013 source:c:\users\owen\documents\phdc++\oclinearsolve\interativesolvers\cglinearsolver.cpp
+	"CGLinearSolver.hpp"
+
+1491315102 c:\users\owen\documents\phdc++\oclinearsolve\interativesolvers\cglinearsolver.hpp
+	"../ConvergenceCriterion.hpp"
+	"../LinearSystem.hpp"
+	"AbstractIterativeLinearSolver.hpp"
+
+1491167381 source:c:\users\owen\documents\phdc++\finitediffernce\boundarynode.cpp
+	"BoundaryNode.hpp"
+
+1491222274 c:\users\owen\documents\phdc++\finitediffernce\boundarynode.hpp
+	<array>
+	"../OCPDE/BoundaryConditions.hpp"
+
+1491056678 c:\users\owen\documents\phdc++\ocpde\boundaryconditions.hpp
+	"PDEInterface.hpp"
+
+1491056990 c:\users\owen\documents\phdc++\ocpde\pdeinterface.hpp
+	"../OCMathLib/OCMathLib.hpp"
+	<fstream>
+	<cassert>
+	<string>
+	<math.h>
+	<sstream>
+	<vector>
+
+1491311554 source:c:\users\owen\documents\phdc++\finitediffernce\finitedifferencesolver.cpp
+	"FiniteDifferenceSolver.hpp"
+	<iomanip>
+	<fstream>
+	<iostream>
+	<memory>
+
+1491318038 c:\users\owen\documents\phdc++\finitediffernce\finitedifferencesolver.hpp
+	"../OCPDE/AbstractPDESolver.hpp"
+	"../OCPDE/SecondOrderPDE2d.hpp"
+	"../OCLinearSolve/InterativeSolvers/CGLinearSolver.hpp"
+	"../OCLinearSolve/InterativeSolvers/JacobiSolver.hpp"
+	"../OCLinearSolve/InterativeSolvers/GaussSeidelSolver.hpp"
+
+1490979206 c:\users\owen\documents\phdc++\ocpde\abstractpdesolver.hpp
+	"PDEInterface.hpp"
+	"../FiniteDiffernce/GridFunction.hpp"
+	<fstream>
+	<cassert>
+	<string>
+	<math.h>
+	<sstream>
+	<vector>
+
+1491055309 c:\users\owen\documents\phdc++\finitediffernce\gridfunction.hpp
+	"../OCMathLib/OCMathLib.hpp"
+	"BoundaryNode.hpp"
+	"InteriorNode.hpp"
+
+1491224215 c:\users\owen\documents\phdc++\finitediffernce\interiornode.hpp
+	<utility>
+	<vector>
+	"BoundaryNode.hpp"
+
+1491056962 c:\users\owen\documents\phdc++\ocpde\secondorderpde2d.hpp
+	"PDEInterface.hpp"
+	<tr1/functional>
+	<functional>
+
+1490896367 source:c:\users\owen\documents\phdc++\finitediffernce\gridfunction.cpp
+	"GridFunction.hpp"
+
+1491056472 source:c:\users\owen\documents\phdc++\finitediffernce\interiornode.cpp
+	"InteriorNode.hpp"
+
+1491056568 source:c:\users\owen\documents\phdc++\ocpde\abstractpdesolver.cpp
+	"AbstractPDESolver.hpp"
+	<cassert>
+	<fstream>
+	<iostream>
+	<iomanip>
+	<sstream>
+	<string>
+
+1491056678 source:c:\users\owen\documents\phdc++\ocpde\boundaryconditions.cpp
+	"BoundaryConditions.hpp"
+	<iostream>
+
+1462504119 source:c:\users\owen\documents\phdc++\ocpde\pdeinterface.cpp
+	"PDEInterface.hpp"
+
+1462765166 source:c:\users\owen\documents\phdc++\ocpde\secondorderpde2d.cpp
+	"SecondOrderPDE2d.hpp"
+
+1491311080 source:c:\users\owen\documents\phdc++\finitediffernce\fdbuilder.cpp
+	"FDBuilder.h"
+
+1491317945 c:\users\owen\documents\phdc++\finitediffernce\fdbuilder.h
+	"FiniteDifferenceSolver.hpp"
+	"GridFunction.hpp"
+	<math.h>
+	<algorithm>
+
+1491235369 c:\users\owen\documents\phdc++\examples\testfd\testfd\shape.hpp
+	<vector>
+	<array>
+	<memory>
+	<utility>
+	<algorithm>
+
+1491313208 source:c:\users\owen\documents\phdc++\oclinearsolve\interativesolvers\gaussseidelsolver.cpp
+	"GaussSeidelSolver.hpp"
+
+1491317563 c:\users\owen\documents\phdc++\oclinearsolve\interativesolvers\gaussseidelsolver.hpp
+	"../ConvergenceCriterion.hpp"
+	"../LinearSystem.hpp"
+	"AbstractIterativeLinearSolver.hpp"
+
+1491316431 source:c:\users\owen\documents\phdc++\oclinearsolve\interativesolvers\jacobisolver.cpp
+	<iostream>
+	<cassert>
+	"JacobiSolver.hpp"
+
+1491317860 c:\users\owen\documents\phdc++\oclinearsolve\interativesolvers\jacobisolver.hpp
+	"../LinearSystem.hpp"
+	"AbstractIterativeLinearSolver.hpp"
+	"../ConvergenceCriterion.hpp"
+

@@ -12,9 +12,10 @@ template<int n>
 class InteriorNode
 {
 //using Connection = std::array<int,2>;
-
+public:
+using Coordinate = std::array<double,n>;
 private:
-    Coordinate<double,n> mxyz;
+    Coordinate mxyz;
 
     int mGlobalNumber;
 
@@ -27,7 +28,7 @@ private:
     Connection mEast;
 
 public:
-    InteriorNode(const Coordinate<double,n>& c,const int globalnumber,const Connection north,const Connection east,
+    InteriorNode(const Coordinate& c,const int globalnumber,const Connection north,const Connection east,
                  const Connection south,const Connection west);
 
     Connection GetNode(const Direction& d) const;
@@ -45,7 +46,7 @@ public:
 
 
 template<int n>
-InteriorNode<n>::InteriorNode(const Coordinate<double,n>& c, const int globalnumber, Connection north,Connection south,
+InteriorNode<n>::InteriorNode(const Coordinate& c, const int globalnumber, Connection north,Connection south,
                  Connection west,Connection east):
                  mxyz(c), mGlobalNumber(globalnumber),
                  mNorth(north),mEast(east),mSouth(south),mWest(west)
@@ -96,7 +97,7 @@ void InteriorNode<n>::ChangeValues(const int globalnumber,const Connection north
 template<int n>
 double InteriorNode<n>::GetLoc(int i) const
 {
-    return mxyz.xyz[i];
+    return mxyz[i];
 }
 
 

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="TestFD" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/TestFD" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add directory="FiniteDiffernce" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/TestFD" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add directory="FiniteDiffernce" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="../../../FiniteDiffernce/BoundaryNode.cpp" />
+		<Unit filename="../../../FiniteDiffernce/BoundaryNode.hpp" />
+		<Unit filename="../../../FiniteDiffernce/FDBuilder.cpp" />
+		<Unit filename="../../../FiniteDiffernce/FDBuilder.h" />
+		<Unit filename="../../../FiniteDiffernce/FiniteDifferenceSolver.cpp" />
+		<Unit filename="../../../FiniteDiffernce/FiniteDifferenceSolver.hpp" />
+		<Unit filename="../../../FiniteDiffernce/GridFunction.cpp" />
+		<Unit filename="../../../FiniteDiffernce/GridFunction.hpp" />
+		<Unit filename="../../../FiniteDiffernce/InteriorNode.cpp" />
+		<Unit filename="../../../FiniteDiffernce/InteriorNode.hpp" />
+		<Unit filename="../../../OCLinearSolve/ConvergenceCriterion.cpp" />
+		<Unit filename="../../../OCLinearSolve/ConvergenceCriterion.hpp" />
+		<Unit filename="../../../OCLinearSolve/InterativeSolvers/AbstractIterativeLinearSolver.cpp" />
+		<Unit filename="../../../OCLinearSolve/InterativeSolvers/AbstractIterativeLinearSolver.hpp" />
+		<Unit filename="../../../OCLinearSolve/InterativeSolvers/CGLinearSolver.cpp" />
+		<Unit filename="../../../OCLinearSolve/InterativeSolvers/CGLinearSolver.hpp" />
+		<Unit filename="../../../OCLinearSolve/InterativeSolvers/GaussSeidelSolver.cpp" />
+		<Unit filename="../../../OCLinearSolve/InterativeSolvers/GaussSeidelSolver.hpp" />
+		<Unit filename="../../../OCLinearSolve/InterativeSolvers/JacobiSolver.cpp" />
+		<Unit filename="../../../OCLinearSolve/InterativeSolvers/JacobiSolver.hpp" />
+		<Unit filename="../../../OCLinearSolve/LinearSystem.cpp" />
+		<Unit filename="../../../OCLinearSolve/LinearSystem.hpp" />
+		<Unit filename="../../../OCMathLib/Matrix.cpp" />
+		<Unit filename="../../../OCMathLib/Matrix.hpp" />
+		<Unit filename="../../../OCMathLib/OCMathLib.cpp" />
+		<Unit filename="../../../OCMathLib/OCMathLib.hpp" />
+		<Unit filename="../../../OCMathLib/Vector.cpp" />
+		<Unit filename="../../../OCMathLib/Vector.hpp" />
+		<Unit filename="../../../OCPDE/AbstractPDESolver.cpp" />
+		<Unit filename="../../../OCPDE/AbstractPDESolver.hpp" />
+		<Unit filename="../../../OCPDE/BoundaryConditions.cpp" />
+		<Unit filename="../../../OCPDE/BoundaryConditions.hpp" />
+		<Unit filename="../../../OCPDE/PDEInterface.cpp" />
+		<Unit filename="../../../OCPDE/PDEInterface.hpp" />
+		<Unit filename="../../../OCPDE/SecondOrderPDE2d.cpp" />
+		<Unit filename="../../../OCPDE/SecondOrderPDE2d.hpp" />
+		<Unit filename="driver.cpp" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

@@ -4,6 +4,5 @@
 #include <iostream>
 #include <memory>
 
-template class FiniteDifferenceSolver<Matrix,Vector>;
 
 
