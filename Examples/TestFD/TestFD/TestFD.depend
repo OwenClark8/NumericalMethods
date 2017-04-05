@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1491317895 source:c:\users\owen\documents\phdc++\examples\testfd\testfd\driver.cpp
+1491401861 source:c:\users\owen\documents\phdc++\examples\testfd\testfd\driver.cpp
 	"C:\Users\Owen\Documents\PhDC++\OCMathLib\OCMathLib.hpp"
 	"C:\Users\Owen\Documents\PhDC++\OCLinearSolve\LinearSystem.hpp"
 	"..\..\..\FiniteDiffernce/FDBuilder.h"
@@ -8,11 +8,12 @@
 	<stdio.h>
 	<vector>
 
-1491058653 c:\users\owen\documents\phdc++\ocmathlib\ocmathlib.hpp
+1491389519 c:\users\owen\documents\phdc++\ocmathlib\ocmathlib.hpp
 	"Matrix.hpp"
 	"Vector.hpp"
+	"CSRMatrix.h"
 
-1491056368 c:\users\owen\documents\phdc++\ocmathlib\matrix.hpp
+1491342168 c:\users\owen\documents\phdc++\ocmathlib\matrix.hpp
 	<math.h>
 	<sstream>
 	<iostream>
@@ -20,7 +21,7 @@
 	<cassert>
 	<iomanip>
 
-1491056446 c:\users\owen\documents\phdc++\ocmathlib\vector.hpp
+1491340571 c:\users\owen\documents\phdc++\ocmathlib\vector.hpp
 	<math.h>
 	<sstream>
 	<iostream>
@@ -28,7 +29,7 @@
 	<cassert>
 	<iomanip>
 
-1490887837 c:\users\owen\documents\phdc++\oclinearsolve\linearsystem.hpp
+1491395114 c:\users\owen\documents\phdc++\oclinearsolve\linearsystem.hpp
 	"C:\Users\Owen\Documents\PhDC++\OCMathLib\OCMathLib.hpp"
 	<memory>
 
@@ -40,16 +41,17 @@
 1490873127 source:c:\users\owen\documents\phdc++\oclinearsolve\linearsystem.cpp
 	"LinearSystem.hpp"
 
-1491056506 source:c:\users\owen\documents\phdc++\ocmathlib\matrix.cpp
+1491343282 source:c:\users\owen\documents\phdc++\ocmathlib\matrix.cpp
 	"Matrix.hpp"
 	"Vector.hpp"
 
 1490872227 source:c:\users\owen\documents\phdc++\ocmathlib\ocmathlib.cpp
 	"OCMathLib.hpp"
 
-1491056559 source:c:\users\owen\documents\phdc++\ocmathlib\vector.cpp
+1491403948 source:c:\users\owen\documents\phdc++\ocmathlib\vector.cpp
 	"Vector.hpp"
 	"Matrix.hpp"
+	<memory>
 
 1491056489 source:c:\users\owen\documents\phdc++\oclinearsolve\interativesolvers\abstractiterativelinearsolver.cpp
 	<cassert>
@@ -67,7 +69,7 @@
 1490887013 source:c:\users\owen\documents\phdc++\oclinearsolve\interativesolvers\cglinearsolver.cpp
 	"CGLinearSolver.hpp"
 
-1491315102 c:\users\owen\documents\phdc++\oclinearsolve\interativesolvers\cglinearsolver.hpp
+1491405157 c:\users\owen\documents\phdc++\oclinearsolve\interativesolvers\cglinearsolver.hpp
 	"../ConvergenceCriterion.hpp"
 	"../LinearSystem.hpp"
 	"AbstractIterativeLinearSolver.hpp"
@@ -98,12 +100,13 @@
 	<iostream>
 	<memory>
 
-1491318038 c:\users\owen\documents\phdc++\finitediffernce\finitedifferencesolver.hpp
+1491405157 c:\users\owen\documents\phdc++\finitediffernce\finitedifferencesolver.hpp
 	"../OCPDE/AbstractPDESolver.hpp"
 	"../OCPDE/SecondOrderPDE2d.hpp"
 	"../OCLinearSolve/InterativeSolvers/CGLinearSolver.hpp"
 	"../OCLinearSolve/InterativeSolvers/JacobiSolver.hpp"
 	"../OCLinearSolve/InterativeSolvers/GaussSeidelSolver.hpp"
+	"../OCMathLib/OCMathLib.hpp"
 
 1490979206 c:\users\owen\documents\phdc++\ocpde\abstractpdesolver.hpp
 	"PDEInterface.hpp"
@@ -155,7 +158,7 @@
 1462765166 source:c:\users\owen\documents\phdc++\ocpde\secondorderpde2d.cpp
 	"SecondOrderPDE2d.hpp"
 
-1491311080 source:c:\users\owen\documents\phdc++\finitediffernce\fdbuilder.cpp
+1491401554 source:c:\users\owen\documents\phdc++\finitediffernce\fdbuilder.cpp
 	"FDBuilder.h"
 
 1491317945 c:\users\owen\documents\phdc++\finitediffernce\fdbuilder.h
@@ -188,4 +191,10 @@
 	"../LinearSystem.hpp"
 	"AbstractIterativeLinearSolver.hpp"
 	"../ConvergenceCriterion.hpp"
+
+1491395293 c:\users\owen\documents\phdc++\ocmathlib\csrmatrix.h
+
+1491404004 source:c:\users\owen\documents\phdc++\ocmathlib\csrmatrix.cpp
+	"CSRMatrix.h"
+	"Vector.hpp"
 

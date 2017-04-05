@@ -16,8 +16,8 @@ using namespace OCMathLib;
 int main()
 {
 
-    double xstepsize= 0.01;
-    double ystepsize = 0.01;
+    double xstepsize= 0.001;
+    double ystepsize = 0.001;
 
     double tollerance = 10e-10;
 
@@ -26,10 +26,10 @@ int main()
 
     std::vector<std::pair<std::array<double,2>,std::array<double,2> > > Lines;
     Lines.reserve(4);
-    Lines.push_back({{0.5,0},{1,0.5}});
-    Lines.push_back({{0.5,0},{0,0.5}});
-    Lines.push_back({{0,0.5},{0.5,1}});
-    Lines.push_back({{1,0.5},{0.5,1}});
+    Lines.push_back({{0,0},{0,1}});
+    Lines.push_back({{0,0},{1,0}});
+    Lines.push_back({{0,1},{1,1}});
+    Lines.push_back({{1,0},{1,1}});
 
 
 
@@ -41,7 +41,7 @@ int main()
 
 
     FDBuilder myBuilder(std::move(Square),xstepsize,ystepsize,1.0,0.0,1.0,0.0);
-    std::cout<<"Start"<<std::endl;
+
     myBuilder.BuildPart();
 
     auto mp_Grid(myBuilder.GetProduct());
@@ -50,16 +50,43 @@ int main()
     SecondOrderPDE2d myPDE(1,0,1,0,0,[](double x,double y){return 1;});
 
 
-    FiniteDifferenceSolver<Matrix,Vector,JacobiSolver<Matrix,Vector>> mySolver(*(mp_Grid),"Square.dat",myPDE,tollerance);
-
+    FiniteDifferenceSolver<CSRMatrix,Vector,CGLinearSolver<CSRMatrix,Vector>> mySolver(*(mp_Grid),"Square.dat",myPDE,tollerance);
+    std::cout<<"Start"<<std::endl;
     mySolver.Solve();
 
 
+    /*
+     Vector V2(100000);
+    for(int i=0;i<10000;i++)
+    {
+       V2[i]=i;
+
+    }
+     Vector V1((V2));
+    for(int i=0;i<100000;i++)
+    {
+
+        V1[i]=i;
+        V2[i]=i+1;
+
+    }
+    std::cout<<"hi"<<V1[4];
+    for(int i=0;i<1;i++)
+    {
+       V1=V1+V2;
+       //std::cout<<"end";
+
+    }
+    //std::cout<<"hiya";
+    //V1=V1+V2;
+    //V1=V1+V2;
+    std::cout<<"end";
+    std::cout<<V1[1];
 
 
 
 
-
+*/
 
 
 
