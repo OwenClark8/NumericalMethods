@@ -38,6 +38,8 @@ class Matrix
       // Copy constructor
       Matrix(const Matrix& otherMatrix);
 
+      Matrix(Matrix&& otherMatrix);
+
       // Specialised Constructor
       Matrix(int numRows, int numCols);
 
@@ -60,6 +62,8 @@ class Matrix
 
       //Overloaded assignment operator
       Matrix& operator=(const Matrix& otherMatrix);
+
+      Matrix& operator=(Matrix&& otherMatrix);
 
       // Unary +
       const Matrix operator+() const;

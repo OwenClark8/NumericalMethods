@@ -27,12 +27,12 @@ public:
     //Specialised constructors
     LinearSystem(const M& amatrix,const V& avector);
 
-    LinearSystem(const M&& amatrix,const V&& avector);
+    LinearSystem(M&& amatrix,V&& avector);
 
     //Copy constructors
     LinearSystem(const LinearSystem& otherlinearsolver);
 
-    LinearSystem(const LinearSystem&& otherlinearsolver);
+    LinearSystem(LinearSystem&& otherlinearsolver);
 
     //Destructor
     ~LinearSystem();
@@ -66,8 +66,8 @@ LinearSystem<M,V>::LinearSystem(const M& amatrix,const V& avector):
 }
 
 template<typename M, typename V>
-LinearSystem<M,V>::LinearSystem(const M&& amatrix,const V&& avector):
-    mpLHS(std::move(amatrix)),mpRHS(std::move(avector))
+LinearSystem<M,V>::LinearSystem(M&& amatrix,V&& avector):
+    mpLHS(new M(std::move(amatrix))),mpRHS(new V(std::move(avector)))
 {
 }
 
@@ -78,8 +78,8 @@ LinearSystem<M,V>::LinearSystem(const LinearSystem& otherlinearsystem):
 }
 
 template<typename M,typename V>
-LinearSystem<M,V>::LinearSystem(const LinearSystem&& otherlinearsystem):
-    mpLHS((std::move(otherlinearsystem.mpLHS))),mpRHS(std::move(otherlinearsystem.mpRHS))
+LinearSystem<M,V>::LinearSystem(LinearSystem&& otherlinearsystem):
+    mpLHS(new M(std::move(otherlinearsystem.mpLHS))),mpRHS(new V(std::move(otherlinearsystem.mpRHS)))
 {
 }
 

@@ -139,7 +139,7 @@ void FDBuilder::BuildPart()
         count++;
     }
 
-    /*
+/*
      int a=sizex;
     int b=sizey;
     for (int i=0;i<a;i++)
@@ -152,7 +152,7 @@ void FDBuilder::BuildPart()
         std::cout<<"|"<<std::endl;
 
     }
-    */
+*/
 
     BNV.reserve(numBN);
     INV.reserve(numIN);

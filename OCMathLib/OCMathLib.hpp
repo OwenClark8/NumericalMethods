@@ -3,6 +3,7 @@
 
 #include "Matrix.hpp"
 #include "Vector.hpp"
+#include "CSRMatrix.h"
 
 
 template<typename T>
@@ -28,10 +29,6 @@ double pNorm(const Vec& V,int n)
     return pow(out,1.0/double(n));
 }
 
-class CSRMatrix
-{
-
-};
 
 
 #endif // OMATH

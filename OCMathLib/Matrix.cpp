@@ -24,6 +24,14 @@ Matrix::Matrix(const Matrix& otherMatrix)
    }
 }
 
+Matrix::Matrix(Matrix&& otherMatrix)
+{
+   mNumRows = otherMatrix.mNumRows;
+   mNumCols = otherMatrix.mNumCols;
+   mData = otherMatrix.mData;
+   otherMatrix.mData=nullptr;
+}
+
 // Constructor for vector of a given length
 // Allocates memory, and initialises entries
 // to zero
@@ -176,6 +184,16 @@ Matrix& Matrix::operator=(const Matrix& otherMatrix)
    return *this;
 }
 
+Matrix& Matrix::operator=(Matrix&& otherMatrix)
+{
+    assert(mNumRows = otherMatrix.mNumRows);
+    assert(mNumCols = otherMatrix.mNumCols);
+    mData=nullptr;
+    mData=otherMatrix.mData;
+    otherMatrix.mData=nullptr;
+    return *this;
+}
+
 // Overloading the unary + operator
 const Matrix Matrix::operator+() const
 {
@@ -187,7 +205,7 @@ const Matrix Matrix::operator+() const
          mat(i,j) = mData[i][j];
       }
    }
-   return mat;
+   return std::move(mat);
 }
 
 // Overloading the unary - operator
@@ -201,7 +219,7 @@ Matrix Matrix::operator-() const
          mat(i,j) = -mData[i][j];
       }
    }
-   return mat;
+   return std::move(mat);
 }
 
 // Overloading the binary + operator
@@ -217,7 +235,7 @@ Matrix Matrix::operator+(const Matrix& m1) const
          mat(i,j) = mData[i][j] + m1.mData[i][j];
       }
    }
-   return mat;
+   return std::move(mat);
 }
 
 // Overloading the binary - operator
@@ -233,7 +251,7 @@ Matrix Matrix::operator-(const Matrix& m1) const
          mat(i,j) = mData[i][j] - m1.mData[i][j];
       }
    }
-   return mat;
+   return std::move(mat);
 }
 
 // Overloading scalar multiplication
@@ -247,7 +265,7 @@ Matrix Matrix::operator*(double a) const
          mat(i,j) = a*mData[i][j];
       }
    }
-   return mat;
+   return std::move(mat);
 }
 
 Matrix Matrix::operator*(const Matrix& m1) const
@@ -267,7 +285,7 @@ Matrix Matrix::operator*(const Matrix& m1) const
             mat(i,j)=sum;
         }
     }
-    return mat;
+    return std::move(mat);
 }
 
 // Overloading matrix multiplied by a vector
@@ -286,7 +304,7 @@ Vector operator*(const Matrix& m, const Vector& v)
       }
    }
 
-   return new_vector;
+   return std::move(new_vector);
 }
 
 // Overloading vector multiplied by a matrix
@@ -305,7 +323,7 @@ Vector operator*(const Vector& v, const Matrix& m)
       }
    }
 
-   return new_vector;
+   return std::move(new_vector);
 }
 
 // Calculate determinant of square matrix recursively

@@ -36,6 +36,8 @@ namespace OCMathLib
       // Copy constructor
       Vector(const Vector& otherVector);
 
+      Vector(Vector&& otherVector);
+
       // Specialised constructor
       Vector(int size);
 
@@ -58,6 +60,8 @@ namespace OCMathLib
 
       // Assignment
       Vector& operator=(const Vector& otherVector);
+
+      Vector& operator=(Vector&& otherVector);
 
       // Unary +
       Vector operator+() const;

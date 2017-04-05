@@ -1,5 +1,6 @@
 #include "Vector.hpp"
 #include "Matrix.hpp"
+#include <memory>
 
 
 namespace OCMathLib
@@ -9,12 +10,21 @@ namespace OCMathLib
     // entries of other vector into it
     Vector::Vector(const Vector& otherVector)
     {
+        //std::cout<<"normalConst";
        mSize = otherVector.GetSize();
        mData = new double [mSize];
        for (int i=0; i<mSize; i++)
        {
           mData[i] = otherVector.mData[i];
        }
+    }
+
+    Vector::Vector(Vector&& otherVector):mData(nullptr)
+    {
+        mSize = otherVector.mSize;
+        mData=otherVector.mData;
+        otherVector.mData = nullptr;
+        //std::cout<<"MoveConst";
     }
 
     // Constructor for vector of a given size
@@ -35,6 +45,7 @@ namespace OCMathLib
     Vector::~Vector()
     {
        delete[] mData;
+       //std::cout<<"destroy";
     }
 
     // Method to get the size of a vector
@@ -101,15 +112,36 @@ namespace OCMathLib
        return *this;
     }
 
+        // Overloading the assignment operator
+
+    Vector& Vector::operator=(Vector&& otherVector)
+    {
+        //PrintVector(*this);
+        delete[] mData;
+        //mData=(otherVector.mData);
+        assert(mSize == otherVector.mSize);
+        //mData=nullptr;
+        mData=otherVector.mData;
+        otherVector.mData = nullptr;
+
+        //otherVector.mData=temp;
+        //mData=std::move(temp);
+        //PrintVector(*this);
+        //std::cout<<"assignment";
+        return *this;
+
+    }
+
     // Overloading the unary + operator
     Vector Vector::operator+() const
     {
+        //std::cout<<"unary";
        Vector v(mSize);
        for (int i=0; i<mSize; i++)
        {
           v[i] = mData[i];
        }
-       return v;
+       return std::move(v);
     }
 
     // Overloading the unary - operator
@@ -120,19 +152,21 @@ namespace OCMathLib
        {
           v[i] = -mData[i];
        }
-       return v;
+       return std::move(v);
     }
 
     // Overloading the binary + operator
     Vector Vector::operator+(const Vector& v1) const
     {
+        //std::cout<<"pluss"<<std::endl;
        assert(mSize == v1.mSize);
        Vector v(mSize);
        for (int i=0; i<mSize; i++)
        {
           v[i] = mData[i] + v1.mData[i];
        }
-       return v;
+       //std::cout<<"pluss"<<std::endl;
+       return std::move(v);
     }
 
     // Overloading the binary - operator
@@ -144,7 +178,7 @@ namespace OCMathLib
        {
           v[i] = mData[i] - v1.mData[i];
        }
-       return v;
+       return std::move(v);
     }
 
     // Overloading scalar multiplication
@@ -155,7 +189,7 @@ namespace OCMathLib
        {
           v[i] = a*mData[i];
        }
-       return v;
+       return std::move(v);
     }
 
     // Method to calculate norm (with default value p=2)

@@ -27,8 +27,8 @@ public:
                    const int maxiterations,
                    const bool savedata=false);
 
-    CGLinearSolver(const LinearSystem<Mat,Vec>&& alinearsystem,
-                   const Vec&& initialguess,
+    CGLinearSolver(LinearSystem<Mat,Vec>&& alinearsystem,
+                   Vec&& initialguess,
                    const double tollerance,
                    const int maxiterations,
                    const bool savedata=false);
@@ -62,15 +62,15 @@ CGLinearSolver<Mat,Vec>::CGLinearSolver(const LinearSystem<Mat,Vec>& plinearsyst
 }
 
 template<typename Mat,typename Vec>
-CGLinearSolver<Mat,Vec>::CGLinearSolver(const LinearSystem<Mat,Vec>&& plinearsystem,
-                               const Vec&& initialguess,
+CGLinearSolver<Mat,Vec>::CGLinearSolver(LinearSystem<Mat,Vec>&& plinearsystem,
+                               Vec&& initialguess,
                                const double tollerance,
                                const int maxiterations,
                                const bool savedata):
     AbstractIterativeLinearSolver(maxiterations,tollerance),
     mplinearsystem(plinearsystem),
-    mpinitialguess(std::move(initialguess)),
-    mpconvergence(std::move(tollerance)),
+    mpinitialguess(new Mat(std::move(initialguess))),
+    mpconvergence(new Vec(std::move(tollerance))),
     mSaveData(savedata)
 {
 
@@ -108,11 +108,9 @@ void CGLinearSolver<Mat,Vec>::Solve(Vec& x)
 
     while (k<mMaxIterations && !convergence)
     {
-
         q=(A)*(p);
 
         double rho_old=r_old.ScalarProduct(r_old);
-
 
         alpha=(rho_old)/(p.ScalarProduct(q));
 
